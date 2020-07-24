@@ -9540,7 +9540,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rmfr@2.0.0:
+rmfr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/rmfr/-/rmfr-2.0.0.tgz#8a42e81332550b3f0019b8fb8ab245bea81b6d1c"
   integrity sha512-nQptLCZeyyJfgbpf2x97k5YE8vzDn7bhwx9NlvODdhgbU0mL1ruh71X0HYdRaOEvWC7Cr+SfV0p5p+Ib5yOl7A==

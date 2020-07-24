@@ -107,11 +107,7 @@ function createWindow() {
   });
 
   // and load the index.html of the app.
-  if (process.env.DEV_SERVER !== "true" && process.env.NODE_ENV !== "test") {
-    win.loadFile(path.join(__dirname, "./index.html"));
-  } else {
-    win.loadURL("http://localhost:8000");
-  }
+  win.loadFile(path.join(__dirname, "./index.html"));
 
   if (REACT_DEV_TOOLS_PATH !== "") {
     BrowserWindow.addDevToolsExtension(REACT_DEV_TOOLS_PATH);

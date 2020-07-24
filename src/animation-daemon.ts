@@ -17,7 +17,7 @@ interface AnimationQueue {
 
 const genId = () => generateRandomString(40);
 
-const queue: AnimationQueue = {};
+const queue: AnimationQueue = { };
 
 const animationLoop = () => {
   const keys = Object.keys(queue);

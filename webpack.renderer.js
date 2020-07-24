@@ -1,35 +1,18 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 require("dotenv").config();
 
 const isDev = (mode) => mode === "development";
 
-/**
- * Return code that will compute the path of the folder containing worker file,
- * which is the electron/dist folder in development mode, and the app.asar/electron/dist
- * folder in production mode
- * Note : the prod mode method gives archifiltre/electron/electron/dist folder in dev mode
- * @param mode - the build mode. "development" or "production".
- * @returns {string}
- */
-const workerRootFolder = (mode) =>
-  isDev(mode)
-    ? JSON.stringify(path.join(__dirname, "electron/dist/"))
-    : "require('path').join(require('electron').remote.app.getAppPath(),'/electron/dist/')";
+const getWorkerPath = (mode) => {
+  const suffix = isDev(mode) ? "" : "/electron/dist/";
+  const appPathGetter = `require("electron").remote.app.getAppPath()`;
+  return `require("path").join(${appPathGetter}, "${suffix}")`;
+};
 
 module.exports = (env, argv = {}) => ({
-  devServer: {
-    compress: true,
-    contentBase: path.resolve(__dirname, "electron/dist"),
-    hot: true,
-    inline: false,
-    port: 8000,
-    writeToDisk: (name) =>
-      /(\.fork\.[jt]s|main\.bundle\.js|\.node)$/.test(name),
-  },
   devtool: isDev(argv.mode) ? "cheap-module-eval-source-map" : false,
 
   entry: {
@@ -49,7 +32,7 @@ module.exports = (env, argv = {}) => ({
           loader: "webpack-fork-loader",
           options: {
             evalPath: true,
-            publicPath: workerRootFolder(argv.mode),
+            publicPath: getWorkerPath(argv.mode),
           },
         },
       },
@@ -133,15 +116,20 @@ module.exports = (env, argv = {}) => ({
   },
 
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: ["node_modules/fswin"],
-    }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["**/*", "!main.js"],
-    }),
     ...(isDev(argv.mode)
       ? []
-      : [new CopyWebpackPlugin({ patterns: ["static"] })]),
+      : [
+          new CopyWebpackPlugin({
+            patterns: [
+              {
+                from: "node_modules/fswin",
+                noErrorOnMissing: true,
+                to: "node_modules/fswin",
+              },
+            ],
+          }),
+        ]),
+    new CopyWebpackPlugin({ patterns: ["static"] }),
     new HtmlWebpackPlugin({
       excludeChunks: ["stats"],
       filename: "index.html",
@@ -158,9 +146,7 @@ module.exports = (env, argv = {}) => ({
       MATOMO_URL: JSON.stringify(process.env.MATOMO_URL),
       MODE: JSON.stringify(argv.mode || "development"),
       SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
-      STATIC_ASSETS_PATH: isDev(argv.mode)
-        ? JSON.stringify("static/")
-        : "__dirname",
+      STATIC_ASSETS_PATH: JSON.stringify("."),
       WRITE_DEBUG: process.env.WRITE_DEBUG,
     }),
   ],
