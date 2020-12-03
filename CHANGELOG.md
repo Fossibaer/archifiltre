@@ -1,3 +1,20 @@
+# [3.2.0-alpha.1](https://github.com/SocialGouv/archifiltre/compare/v3.1.1...v3.2.0-alpha.1) (2020-12-03)
+
+
+### Bug Fixes
+
+* fix loading of older versions of the script file ([#1124](https://github.com/SocialGouv/archifiltre/issues/1124)) ([6c2c67b](https://github.com/SocialGouv/archifiltre/commit/6c2c67b6b2511885f47ff3852ad68aee18131619))
+* fix scroll bars on loading screen ([#1128](https://github.com/SocialGouv/archifiltre/issues/1128)) ([e256f2f](https://github.com/SocialGouv/archifiltre/commit/e256f2f7e36f487f44b686ca5872fffedd3f31a2))
+* **github:** unify behaviour of release channels ([003abbd](https://github.com/SocialGouv/archifiltre/commit/003abbd9467024b707e8892d11680712ab3c9b64))
+* run branch builds on pull requests ([#1118](https://github.com/SocialGouv/archifiltre/issues/1118)) ([1e0b306](https://github.com/SocialGouv/archifiltre/commit/1e0b3062bd3a79db0b59510d6914de5352b53860))
+
+
+### Features
+
+* allow to edit element date ([#1126](https://github.com/SocialGouv/archifiltre/issues/1126)) ([02d0939](https://github.com/SocialGouv/archifiltre/commit/02d0939c9ee1f6c4360f125fdabcef8a6ccf4b3d))
+* allow to save and load updated dates ([#1129](https://github.com/SocialGouv/archifiltre/issues/1129)) ([8b856ba](https://github.com/SocialGouv/archifiltre/commit/8b856baad4fd69f4b4018bdd0a9a26a43796b7e1))
+* **github:** allow manual build trigged on github ([#1120](https://github.com/SocialGouv/archifiltre/issues/1120)) ([792f3cf](https://github.com/SocialGouv/archifiltre/commit/792f3cfcded25a95687d97b40e7c3ceaa3f628cd)), closes [#1095](https://github.com/SocialGouv/archifiltre/issues/1095) [#1010](https://github.com/SocialGouv/archifiltre/issues/1010) [#1121](https://github.com/SocialGouv/archifiltre/issues/1121)
+
 # [3.2.0](https://github.com/SocialGouv/archifiltre/compare/v3.1.1...v3.2.0) (2020-11-17)
 
 
