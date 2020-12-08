@@ -88,3 +88,8 @@ To know more about the project architecture, go [here](https://github.com/Social
 ## Import script
 
 Archifiltre provides you with an export script that you can run directly on your file server. To know more about it, go [here](https://github.com/SocialGouv/archifiltre/blob/master/scripts/README.md)
+
+
+## Code signing
+
+Code signing is done through Github actions build
