@@ -1,3 +1,10 @@
+# [3.2.0-alpha.2](https://github.com/SocialGouv/archifiltre/compare/v3.2.0-alpha.1...v3.2.0-alpha.2) (2020-12-08)
+
+
+### Bug Fixes
+
+* fix code signing ([6b54034](https://github.com/SocialGouv/archifiltre/commit/6b540341863ae545d3950886f80ccb54ccc432f8))
+
 # [3.2.0-alpha.1](https://github.com/SocialGouv/archifiltre/compare/v3.1.1...v3.2.0-alpha.1) (2020-12-03)
 
 
